@@ -19,7 +19,7 @@ class StatCard extends StatelessWidget {
     return Card(
       elevation: 3,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      color: color.withOpacity(0.1),
+      color: Color.fromRGBO(33, 150, 243, 0.8),
       child: Container(
         width: 100,
         height: 120,
@@ -29,9 +29,14 @@ class StatCard extends StatelessWidget {
           children: [
             Icon(icon, color: color, size: 26),
             const SizedBox(height: 6),
-            Text(title, textAlign: TextAlign.center, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500)),
+            Text(title,
+                textAlign: TextAlign.center,
+                style:
+                    const TextStyle(fontSize: 12, fontWeight: FontWeight.w500)),
             const SizedBox(height: 6),
-            Text(value.toStringAsFixed(1), style: TextStyle(fontSize: 18, color: color, fontWeight: FontWeight.bold)),
+            Text(value.toStringAsFixed(1),
+                style: TextStyle(
+                    fontSize: 18, color: color, fontWeight: FontWeight.bold)),
           ],
         ),
       ),
