@@ -1,3 +1,5 @@
+import 'post_model.dart';
+
 class UserModel {
   final String nom;
   final String prenom;
@@ -5,15 +7,34 @@ class UserModel {
   final String matricule;
   final String motDePasse;
 
+  // Champs facultatifs ajoutés pour le profil
+  final String? photoUrl;
+  final String? bio;
+  final String? specialisation;
+  final String? location;
+  final String? profileDescription;
+  final List<PostModel> posts;
+
   UserModel({
     required this.nom,
     required this.prenom,
     required this.dateNaissance,
     required this.matricule,
     required this.motDePasse,
+    this.photoUrl,
+    this.bio,
+    this.specialisation,
+    this.location,
+    this.profileDescription,
+    this.posts = const [],
   });
 
-  /// Factory method pour créer un utilisateur vide
+  /// Nom complet
+  String get fullName => '$prenom $nom';
+
+  /// Identifiant unique pour comparaison
+  String get id => matricule;
+
   factory UserModel.empty() {
     return UserModel(
       nom: '',
@@ -24,7 +45,6 @@ class UserModel {
     );
   }
 
-  /// Vérifie si l'utilisateur est vide
   bool get isEmpty =>
       nom.isEmpty &&
       prenom.isEmpty &&
@@ -32,6 +52,5 @@ class UserModel {
       matricule.isEmpty &&
       motDePasse.isEmpty;
 
-  /// Vérifie si l'utilisateur est rempli
   bool get isNotEmpty => !isEmpty;
 }

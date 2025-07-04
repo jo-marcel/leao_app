@@ -25,10 +25,11 @@ class ChatService {
   }
 
   List<Message> getMessagesBetween(String userId1, String userId2) {
-    return _messages.where((m) =>
-      (m.senderId == userId1 && m.receiverId == userId2) ||
-      (m.senderId == userId2 && m.receiverId == userId1)
-    ).toList()
+    return _messages
+        .where((m) =>
+            (m.senderId == userId1 && m.receiverId == userId2) ||
+            (m.senderId == userId2 && m.receiverId == userId1))
+        .toList()
       ..sort((a, b) => a.timestamp.compareTo(b.timestamp));
   }
 
@@ -45,7 +46,8 @@ class ChatService {
 
     return lastMessages.entries.map((entry) {
       final contactId = entry.key;
-      final name = contactId == 'alex' ? 'Alexandre Kouadio' : 'Utilisateur $contactId';
+      final name =
+          contactId == 'alex' ? 'Alexandre Kouadio' : 'Utilisateur $contactId';
       return Contact(id: contactId, name: name);
     }).toList();
   }
